@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "@myorg/host": "http://localhost:4200/main.js",
+    "@myorg/cats": "http://localhost:4201/main.js",
+    "@myorg/dogs": "http://localhost:4202/main.js",
+    "@myorg/navbar": "http://localhost:4203/main.js"
+  }
+}
