@@ -6,7 +6,7 @@
 This is an example Nx monorepo demonstrating how single-spa can be used for microfrontends with the new Angular builder based on Vite/esbuild.
 
 Goals:
-- [x] Angular micro-frontend apps, served/bundled as pure ES Modules by Vite/esbuild
+- [x] Angular micro-frontend apps, served/bundled as native ES Modules by Vite/esbuild
 - [x] Native browser importmap support, enhanced by import-map-injector
 - [x] Route-based loading of micro-frontends handled by [single-spa](https://single-spa.js.org)
 - [x] live-reload functionality handled by manually importing `@vite/client` from our MF modules at runtime (only during development)
