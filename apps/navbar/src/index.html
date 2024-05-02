@@ -5,29 +5,11 @@
     <title>navbar</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <script src="https://unpkg.com/zone.js@0.14.4/bundles/zone.umd.min.js"></script>
-    <script type="importmap">
-      {
-        "imports": {
-          "single-spa": "https://ga.jspm.io/npm:single-spa@6.0.1/lib/es2015/esm/single-spa.dev.js"
-        }
-      }      
-    </script>
   </head>
   <body>
-    <div id="single-spa:nav"></div>
-    <script type="module">
-      import { registerApplication, start } from "single-spa";
-
-      // Simple usage
-      registerApplication(
-        "mf",
-        () => import("http://localhost:4203/main.js"),
-        () => true,
-      );
-
-      start();
-    </script>
+    <!--
+      EMPTY, BECAUSE WE DON'T NEED IT.
+      THIS FILE IS ONLY HERE BECAUSE THE VITE DEV SERVER REQUIRES IT.
+    -->
   </body>
 </html>
