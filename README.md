@@ -36,7 +36,7 @@ To run the application, we need to start the dev-server on each of the apps in t
 
 To do this, we could open 5 separate terminal windows and run the `serve` target for each of these apps separately (e.g. `pnpm nx serve app-shell` etc).
 
-OR, to make it easier, we can run the `dev` script (defined in package.json) which leverages Nx to start them all at once in parallel:
+OR, to make it easier, we can run the `dev` script which leverages Nx to start them all at once in parallel:
 
 ``` bash
 pnpm dev
