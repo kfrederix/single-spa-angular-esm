@@ -1,8 +1,8 @@
-import { getOriginUrl } from '@single-spa-angular-esm/shared-utils';
+import { loadViteClient } from '@single-spa-angular-esm/shared-utils';
 import { registerApplication, start } from 'single-spa';
 
 if (import.meta.env.MODE === 'development') {
-  import(/* @vite-ignore */ `${getOriginUrl()}/@vite/client`);
+  loadViteClient();
 }
 
 registerApplication(

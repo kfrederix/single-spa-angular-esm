@@ -5,7 +5,7 @@
   "sourceRoot": "apps/app-shell/src",
   "tags": [],
   "// targets": "to see all targets run: nx show project app-shell --web",
-  "// serve": "we use preview-server for the 'serve' target because we don't want Vite to insert the <script type='module' src='@vite/client'> element. The reason is that we user external importmaps and import-map-injector is therefore adding the final importmap asynchronously. That means we can not have any <script type'module'> until the final importmap is added",
+  "// serve": "we use preview-server for the 'serve' target because we don't want Vite to insert the <script type='module' src='@vite/client'> element. The reason is that we use external importmaps and import-map-injector is therefore adding the final importmap asynchronously. That means we can not have any <script type'module'> until the final importmap is added",
   "targets": {
     "build": {
       "executor": "@nx/vite:build",

@@ -1,14 +1,14 @@
 import { NgZone, isDevMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { NavigationStart, Router } from '@angular/router';
-import { getOriginUrl } from '@single-spa-angular-esm/shared-utils';
+import { loadViteClient } from '@single-spa-angular-esm/shared-utils';
 import type { AppProps } from 'single-spa';
 import { singleSpaAngular } from 'single-spa-angular';
 import { AppRootComponent } from './app/app-root.component';
 import { appConfig } from './app/app.config';
 
 if (isDevMode()) {
-  import(/* @vite-ignore */ `${getOriginUrl()}/@vite/client`);
+  loadViteClient();
 }
 
 const lifecycles = singleSpaAngular<AppProps>({
