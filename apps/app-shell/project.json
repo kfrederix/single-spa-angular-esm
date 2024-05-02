@@ -12,14 +12,22 @@
       "options": {
         "configFile": "apps/app-shell/vite.config.js",
         "outputPath": "dist/apps/app-shell",
-        "skipTypeCheck": true,
-        "watch": true
+        "skipTypeCheck": true
+      },
+      "defaultConfiguration": "production",
+      "configurations": {
+        "development": {
+          "watch": true
+        },
+        "production": {
+          "watch": false
+        }
       }
     },
     "serve": {
       "executor": "@nx/vite:preview-server",
       "options": {
-        "buildTarget": "build",
+        "buildTarget": "build:development",
         "port": 4300
       }
     }
