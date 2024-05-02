@@ -17,7 +17,7 @@ Since Vite does not support SystemJS as an output format (and has no plans to ev
 
 Since we don't need to support Internet Explorer anymore, we can now confidently rely on `<script type="importmap">` being [natively supported by all modern browsers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap).
 
-However, there are 3 features that we would like to encorporate in our architecture that are currently not supported by native importmap implementations:
+However, there are 3 features that we would like to incorporate in our architecture that are currently not supported by native importmap implementations:
 
  - external importmaps: i.e. `<script type="importmap" src="...">`
  - multiple importmaps: native browser implementations support only 1 importmap
