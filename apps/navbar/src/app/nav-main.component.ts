@@ -6,21 +6,20 @@ const routes = [
   { path: '/dogs', label: 'Dogs' },
 ] as const;
 
-const isValidPath = (path: string) =>
-  routes.some((route) => path.startsWith(route.path));
+const isValidPath = (path: string) => routes.some((route) => path.startsWith(route.path));
 
 @Component({
   standalone: true,
   imports: [NgClass],
   selector: 'nav-main',
   template: `
-    <nav
-      class="flex items-center gap-4 py-4 px-8 bg-gray-100 border-b border-gray-300"
-    >
+    <nav class="flex items-center gap-4 py-4 px-8 bg-gray-100 border-b border-gray-300">
       @for(navLink of navLinks(); track navLink.path) {
       <a
+        class="border-b-2 border-transparent"
         [ngClass]="{
-          'text-teal-600 font-bold': appPath().startsWith(navLink.path)
+          'text-teal-600 font-bold cursor-default': appPath().startsWith(navLink.path),
+          'hover:border-b-2 hover:border-teal-600': !appPath().startsWith(navLink.path)
         }"
         [href]="navLink.path"
         >{{ navLink.label }}</a
