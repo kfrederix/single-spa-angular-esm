@@ -1,4 +1,4 @@
-# POC: single-spa with Angular and native ESM
+# Single-Spa with Angular and native ESM
 
 
 ## Introduction
