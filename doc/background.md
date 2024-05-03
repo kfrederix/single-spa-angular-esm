@@ -17,7 +17,7 @@ Since Vite does not support SystemJS as an output format (and has no plans to ev
 
 Since we don't need to support Internet Explorer anymore, we can now confidently rely on `<script type="importmap">` being [natively supported by all modern browsers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap).
 
-However, there are 3 features that we would like to encorporate in our architecture that are currently not supported by native importmap implementations:
+However, there are 3 features that we would like to incorporate in our architecture that are currently not supported by native importmap implementations:
 
  - external importmaps: i.e. `<script type="importmap" src="...">`
  - multiple importmaps: native browser implementations support only 1 importmap
@@ -39,7 +39,7 @@ While setting up this proof-of-concept repo, some additional challenges came up.
 
 ### Live-reload
 
-During development, we want to see our code changes reflected in the browser as quickly as possible. Vite usually takes care of that for us out-of-the-box, when we are working on a "normal" application. This way Vite does that, is by auto-injecting a `<script type="module" src="@vite/client">` at the top of the app's index.html file. This `@vite/client` script will then set up the websockets communication with the Vite dev server and it will reload the page when the Vite dev server notifies the client that a change was made.
+During development, we want to see our code changes reflected in the browser as quickly as possible. Vite usually takes care of that for us out-of-the-box, when we are working on a "normal" application. The way Vite does that, is by auto-injecting a `<script type="module" src="@vite/client">` at the top of the app's index.html file. This `@vite/client` script will then set up the websockets communication with the Vite dev server and it will reload the page when the Vite dev server notifies the client that a change was made.
 
 However, things are a bit different when working with this MF (micro-frontend) architecture. More specifically, when working in this way each MF is an app that will get loaded by dynamically importing the micro-frontend's entry javascript module file. This means that we are not using any index.html file that belongs to specific MF apps (and therefore no out-of-the-box websocket communication with the MF dev-server).
 
