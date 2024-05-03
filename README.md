@@ -7,7 +7,7 @@ This is an example Nx monorepo demonstrating how single-spa can be used for micr
 
 Goals:
 - [x] Angular micro-frontend apps, served/bundled as native ES Modules by Vite/esbuild
-- [x] Native browser importmap support
+- [x] Leverage native browser importmap support
 - [x] Support for having multiple importmaps (thanks to [import-map-injector](https://github.com/single-spa/import-map-injector))
 - [x] Support for external importmaps (thanks to [import-map-injector](https://github.com/single-spa/import-map-injector))
 - [x] Route-based loading of micro-frontends (handled by [single-spa](https://single-spa.js.org))
