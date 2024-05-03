@@ -105,7 +105,11 @@ export class AppRootComponent {}
 
 ```
 
-Finally, we can use this wrapper component to bootstrap our app (e.g. `bootstrapApplication(AppRootComponent, appConfig)`).
+Finally, we can use this wrapper component to bootstrap our app:
+
+``` typescript
+bootstrapApplication(AppRootComponent, appConfig)
+```
 
 Note that we referenced the global stylesheet(s) from this wrapper component, in combination with `ViewEncapsulation.None`. This will cause Angular to do exactly what we want: injecting the global styles into the DOM when we are bootstrapping our micro-frontend app at runtime.
 
