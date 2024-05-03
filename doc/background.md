@@ -111,7 +111,7 @@ Finally, we can use this wrapper component to bootstrap our app:
 bootstrapApplication(AppRootComponent, appConfig)
 ```
 
-Note that we referenced the global stylesheet(s) from this wrapper component, in combination with `ViewEncapsulation.None`. This will cause Angular to do exactly what we want: injecting the global styles into the DOM when we are bootstrapping our micro-frontend app at runtime.
+Note that we referenced our global stylesheet from this wrapper component, in combination with `ViewEncapsulation.None`. This will cause Angular to do exactly what we want: injecting the global styles into the DOM when we are bootstrapping our micro-frontend app at runtime.
 
 
 ## Conclusion
