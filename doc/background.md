@@ -48,11 +48,72 @@ Fortunately, we can very easily import the `@vite/client` module ourselves, from
 
 ### Static asset urls
 
-When it comes to static assets, like images, that we use in our micro-frontends we must refer to them using absolute urls. Relative urls will not work, because these assets are relative to the MF module. Not relative to the app-shell page.
+Any static assets, like images, that we use in our micro-frontends must be referred to using absolute urls. Relative urls will not work, because these assets are relative to the MF module. Not relative to the app-shell page.
 
 For example: consider the app-shell page running on URL http://localhost:4300. This app-shell now loads a micro-frontend which can be served from a different url like http://localhost:4201/main.js. In case this micro-frontend would refer to a static asset in a relative way, like `<img src="/assets/cat.jpg">` then the browser would resolve the image url to http://localhost:4300/assets/cat.jpg and it would result in a 404 because the image is really located at http://localhost:4201/assets/cat.jpg.
 
 So how can we refer to assets using absolute urls, without the need to hard-code the full final url? That's right: [import.meta](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta) comes to rescue us again here. In the same way that we used it to load the `@vite/client`, we can also rely on it to correctly resolve the full static asset urls.
+
+
+### Global styles for Angular micro-frontends
+
+When we have a global stylesheet (e.g. `styles.css`) that we want to use with our Angular micro-frontend apps, another problem arises. Normally, we would reference these global stylesheets from the `angular.json` file (or `project.json` in case of Nx). For example:
+
+``` json
+"targets": {
+  "build": {
+    ...
+    "options": {
+      ...
+      "styles": [
+        "apps/cats/src/styles.css"
+      ],
+      ...
+    }
+  }
+}
+```
+
+However, when using the [angular application builder](https://angular.io/guide/esbuild#using-the-application-builder) this will result in a *separate* `styles.css` file which Angular expects us to reference from a `<link rel="stylesheet">` tag in the index.html file. But that is not what we want. We would prefer these styles to be included in our main JS bundle and get injected into the DOM automatically when we `import()` our micro-frontend module at runtime.
+
+To work around this problem, we could take a slightly different approach. First, we remove the global stylesheet(s) again from our project.json file:
+
+``` diff
+"targets": {
+  "build": {
+    ...
+    "options": {
+      ...
+      "styles": [
+-        "apps/cats/src/styles.css"
+      ],
+      ...
+    }
+  }
+}
+```
+
+Then, we can create a small wrapper component at the top level of our app as follows:
+
+``` typescript
+import { Component, ViewEncapsulation } from '@angular/core';
+import { AppComponent } from './app.component';
+
+@Component({
+  standalone: true,
+  imports: [AppComponent],
+  selector: 'app-root',
+  template: `<app-main />`,
+  styleUrls: ['../styles.css'],
+  encapsulation: ViewEncapsulation.None,
+})
+export class AppRootComponent {}
+
+```
+
+Finally, we can use this wrapper component to bootstrap our app (e.g. `bootstrapApplication(AppRootComponent, appConfig)`).
+
+Note that we referenced the global stylesheet(s) from this wrapper component, in combination with `ViewEncapsulation.None`. This will cause Angular to do exactly what we want: injecting the global styles into the DOM when we are bootstrapping our micro-frontend app at runtime.
 
 
 ## Conclusion
