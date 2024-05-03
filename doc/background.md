@@ -62,13 +62,10 @@ When we have a global stylesheet (e.g. `styles.css`) that we want to use with ou
 ``` json
 "targets": {
   "build": {
-    ...
     "options": {
-      ...
       "styles": [
         "apps/cats/src/styles.css"
       ],
-      ...
     }
   }
 }
@@ -81,13 +78,10 @@ To work around this problem, we could take a slightly different approach. First,
 ``` diff
 "targets": {
   "build": {
-    ...
     "options": {
-      ...
       "styles": [
 -        "apps/cats/src/styles.css"
       ],
-      ...
     }
   }
 }
