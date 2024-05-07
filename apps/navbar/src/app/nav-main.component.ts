@@ -16,10 +16,9 @@ const isValidPath = (path: string) => routes.some((route) => path.startsWith(rou
     <nav class="flex items-center gap-4 py-4 px-8 bg-gray-100 border-b border-gray-300">
       @for(navLink of navLinks(); track navLink.path) {
       <a
-        class="border-b-2 border-transparent"
+        class="border-b-2 border-transparent hover:text-teal-600"
         [ngClass]="{
-          'text-teal-600 font-bold cursor-default': appPath().startsWith(navLink.path),
-          'hover:border-b-2 hover:border-teal-600': !appPath().startsWith(navLink.path)
+          'text-teal-600 font-bold cursor-default': appPath().startsWith(navLink.path)
         }"
         [href]="navLink.path"
         >{{ navLink.label }}</a
