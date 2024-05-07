@@ -6,7 +6,7 @@ import { DogsComponent } from './dogs/dogs.component';
   imports: [DogsComponent],
   selector: 'app-main',
   template: `
-    <section class="h-full p-7 bg-[#F7E4A7]">
+    <section class="h-full p-7 bg-[#BBEBFF]">
       <app-dogs />
     </section>
   `,
