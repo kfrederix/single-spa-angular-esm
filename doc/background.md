@@ -10,7 +10,7 @@ Until now, the recommended setup by the single-spa core team has been based on i
 
 Since v17, Angular provides an improved builder which is based on [Vite](https://vitejs.dev) (dev server) and [esbuild](https://esbuild.github.io) (output bundling).
 
-Since Vite does not support SystemJS as an output format (and has no plans to ever do so) it makes perfect sense for us to refactor our micro-frontend setup to align with the envisioned native-ESM approach which will be recommended by single-spa core team going forward.
+Since esbuild does not support SystemJS as an output format (and likely never will) it makes perfect sense for us to refactor our micro-frontend setup to align with the envisioned native-ESM approach which will be recommended by single-spa core team going forward.
 
 
 ## Solving native importmap shortcomings
