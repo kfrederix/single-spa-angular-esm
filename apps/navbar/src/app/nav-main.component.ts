@@ -6,8 +6,6 @@ const routes = [
   { path: '/dogs', label: 'Dogs' },
 ] as const;
 
-const isValidPath = (path: string) => routes.some((route) => path.startsWith(route.path));
-
 @Component({
   standalone: true,
   imports: [NgClass],
@@ -33,11 +31,6 @@ export class NavMainComponent implements OnInit {
   navLinks = signal(routes);
 
   ngOnInit(): void {
-    if (!isValidPath(document.location.pathname)) {
-      // redirect to /cats when current path is invalid
-      location.href = '/cats';
-    }
-
     this.appPath.set(document.location.pathname);
   }
 }

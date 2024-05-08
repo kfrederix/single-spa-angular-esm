@@ -14,7 +14,7 @@ registerApplication(
 registerApplication(
   'cats',
   () => import('@myorg/cats'),
-  (location) => location.pathname.startsWith('/cats')
+  (location) => location.pathname.startsWith('/cats') || ['', '/'].includes(location.pathname)
 );
 
 registerApplication(
