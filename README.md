@@ -1,5 +1,7 @@
 # Single-Spa with Angular v17+ and native ESM
 
+![Nx - Angular - esbuild - Single-Spa](doc/logos.png)
+
 
 ## What is this?
 
