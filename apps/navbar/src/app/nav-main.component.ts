@@ -1,5 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
+import { navigateToUrl } from 'single-spa';
 
 const routes = [
   { path: '/cats', label: 'Cats' },
@@ -19,6 +20,7 @@ const routes = [
           'text-teal-600 font-bold cursor-default': appPath().startsWith(navLink.path)
         }"
         [href]="navLink.path"
+        onclick="singleSpaNavigate(event)"
         >{{ navLink.label }}</a
       >
       }
@@ -30,7 +32,13 @@ export class NavMainComponent implements OnInit {
   appPath = signal('');
   navLinks = signal(routes);
 
+  singleSpaNavigate = navigateToUrl;
+
   ngOnInit(): void {
     this.appPath.set(document.location.pathname);
+
+    window.addEventListener('single-spa:routing-event', () => {
+      this.appPath.set(document.location.pathname);
+    });
   }
 }

@@ -18,9 +18,7 @@
         "assets": ["apps/navbar/src/assets"],
         "styles": [],
         "plugins": [],
-        "externalDependencies": [
-          "single-spa"
-        ]
+        "externalDependencies": []
       },
       "configurations": {
         "production": {
