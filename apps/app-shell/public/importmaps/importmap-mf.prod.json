@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "@myorg/host": "./mf/host/main.js",
+    "@myorg/cats": "./mf/cats/main.js",
+    "@myorg/dogs": "./mf/dogs/main.js",
+    "@myorg/navbar": "./mf/navbar/main.js"
+  }
+}

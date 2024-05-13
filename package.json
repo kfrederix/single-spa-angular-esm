@@ -4,7 +4,9 @@
   "license": "MIT",
   "packageManager": "pnpm@8.15.5",
   "scripts": {
-    "dev": "nx run-many -t serve --parallel=5"
+    "dev": "nx run-many -t serve --parallel=5",
+    "build-all": "nx run-many -t build",
+    "prepare-deploy": "pnpm build-all && node -r @swc-node/register ./tools/ci/pack.ts"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +35,7 @@
     "@angular/compiler-cli": "17.3.3",
     "@angular/language-service": "17.3.3",
     "@nx/angular": "19.0.0",
+    "@nx/devkit": "19.0.0",
     "@nx/eslint": "19.0.0",
     "@nx/eslint-plugin": "19.0.0",
     "@nx/jest": "19.0.0",
@@ -44,6 +47,7 @@
     "@swc-node/register": "~1.8.0",
     "@swc/core": "~1.3.85",
     "@swc/helpers": "~0.5.2",
+    "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.4.0",
     "@types/node": "18.16.9",
     "@typescript-eslint/eslint-plugin": "7.3.0",
@@ -53,6 +57,7 @@
     "autoprefixer": "^10.4.19",
     "eslint": "8.57.0",
     "eslint-config-prettier": "^9.0.0",
+    "fs-extra": "^11.2.0",
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
     "jest-preset-angular": "~14.0.3",
@@ -70,4 +75,3 @@
     "vitest": "^1.5.3"
   }
 }
-
