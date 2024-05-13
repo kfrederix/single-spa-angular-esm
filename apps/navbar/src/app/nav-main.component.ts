@@ -1,5 +1,7 @@
 import { NgClass } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { fromEvent, map } from 'rxjs';
 import { navigateToUrl } from 'single-spa';
 
 const routes = [
@@ -28,17 +30,13 @@ const routes = [
     </nav>
   `,
 })
-export class NavMainComponent implements OnInit {
-  appPath = signal('');
+export class NavMainComponent {
+  private readonly currentLocationPath$ = fromEvent(window, 'single-spa:routing-event').pipe(
+    map(() => document.location.pathname)
+  );
+
+  appPath = toSignal(this.currentLocationPath$, { initialValue: document.location.pathname });
   navLinks = signal(routes);
 
   singleSpaNavigate = navigateToUrl;
-
-  ngOnInit(): void {
-    this.appPath.set(document.location.pathname);
-
-    window.addEventListener('single-spa:routing-event', () => {
-      this.appPath.set(document.location.pathname);
-    });
-  }
 }
