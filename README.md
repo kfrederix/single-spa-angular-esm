@@ -61,7 +61,7 @@ Step 1. Serve 1 micro-frontend app locally. For example:
 pnpm nx serve cats
 ```
 
-Step 2. Visit deployed application in your browser: https://single-spa-angular-esm.surge.sh/
+Step 2. Visit deployed application in your browser: https://single-spa-angular-esm.vercel.app/
 
 
 Step 3. Open the JS console and execute the following javascript command
