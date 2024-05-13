@@ -2,7 +2,7 @@ import { workspaceRoot } from '@nx/devkit';
 import fs from 'fs-extra';
 import { join } from 'path';
 
-const deployDir = join(workspaceRoot, 'dist/deploy2');
+const deployDir = join(workspaceRoot, 'dist/deploy');
 const mfApps = ['navbar', 'cats', 'dogs'];
 
 (async function pack() {
