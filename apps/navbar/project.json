@@ -18,7 +18,7 @@
         "assets": ["apps/navbar/src/assets"],
         "styles": [],
         "plugins": [],
-        "externalDependencies": []
+        "externalDependencies": ["rxjs", "rxjs/operators", "single-spa"]
       },
       "configurations": {
         "production": {

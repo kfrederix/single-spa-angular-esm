@@ -18,9 +18,7 @@
         "assets": ["apps/cats/src/assets"],
         "styles": [],
         "plugins": [],
-        "externalDependencies": [
-          "single-spa"
-        ]
+        "externalDependencies": ["rxjs", "rxjs/operators", "single-spa"]
       },
       "configurations": {
         "production": {
