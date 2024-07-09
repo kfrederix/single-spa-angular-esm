@@ -4,11 +4,11 @@ import { DogsComponent } from './dogs/dogs.component';
 @Component({
   standalone: true,
   imports: [DogsComponent],
-  selector: 'app-main',
+  selector: 'dogs-app-main',
   template: `
     <section class="h-full p-7 bg-[#BBEBFF]">
-      <app-dogs />
+      <dogs-app />
     </section>
   `,
 })
-export class AppComponent {}
+export class DogsAppComponent {}

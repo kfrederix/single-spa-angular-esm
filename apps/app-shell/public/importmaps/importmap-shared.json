@@ -1,12 +1,7 @@
 {
   "imports": {
-    "rxjs": "https://ga.jspm.io/npm:rxjs@7.8.1/dist/esm5/index.js",
-    "rxjs/operators": "https://ga.jspm.io/npm:rxjs@7.8.1/dist/esm5/operators/index.js",
-    "single-spa": "https://ga.jspm.io/npm:single-spa@6.0.1/lib/es2015/esm/single-spa.min.js"
-  },
-  "scopes": {
-    "https://ga.jspm.io/": {
-      "tslib": "https://ga.jspm.io/npm:tslib@2.6.3/tslib.es6.mjs"
-    }
+    "rxjs": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs/esm/es2015/rxjs.min.js",
+    "rxjs/operators": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs/esm/es2015/rxjs-operators.min.js",
+    "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.1/lib/es2015/esm/single-spa.min.js"
   }
 }

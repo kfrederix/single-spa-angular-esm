@@ -2,7 +2,7 @@
   "name": "cats",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "cats",
   "sourceRoot": "apps/cats/src",
   "tags": [],
   "targets": {
@@ -13,12 +13,16 @@
         "outputPath": "dist/apps/cats",
         "index": "apps/cats/src/index.html",
         "browser": "apps/cats/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [],
         "tsConfig": "apps/cats/tsconfig.app.json",
         "assets": ["apps/cats/src/assets"],
         "styles": [],
         "plugins": [],
-        "externalDependencies": ["rxjs", "rxjs/operators", "single-spa"]
+        "externalDependencies": [
+          "single-spa",
+          "rxjs",
+          "rxjs/operators"
+        ]
       },
       "configurations": {
         "production": {
@@ -39,7 +43,8 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "namedChunks": true
         }
       },
       "defaultConfiguration": "production"
@@ -48,7 +53,7 @@
       "executor": "@nx/angular:dev-server",
       "options": {
         "port": 4201,
-        "hmr": true
+        "prebundle": false
       },
       "configurations": {
         "production": {

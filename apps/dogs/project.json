@@ -2,7 +2,7 @@
   "name": "dogs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "dogs",
   "sourceRoot": "apps/dogs/src",
   "tags": [],
   "targets": {
@@ -13,11 +13,15 @@
         "outputPath": "dist/apps/dogs",
         "index": "apps/dogs/src/index.html",
         "browser": "apps/dogs/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [],
         "tsConfig": "apps/dogs/tsconfig.app.json",
         "assets": ["apps/dogs/src/assets"],
         "styles": [],
-        "externalDependencies": ["rxjs", "rxjs/operators", "single-spa"]
+        "externalDependencies": [
+          "single-spa",
+          "rxjs",
+          "rxjs/operators"
+        ]
       },
       "configurations": {
         "production": {
@@ -38,7 +42,8 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "namedChunks": true
         }
       },
       "defaultConfiguration": "production"
@@ -46,7 +51,8 @@
     "serve": {
       "executor": "@nx/angular:dev-server",
       "options": {
-        "port": 4202
+        "port": 4202,
+        "prebundle": false
       },
       "configurations": {
         "production": {

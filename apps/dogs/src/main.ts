@@ -4,7 +4,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { loadViteClient } from '@single-spa-angular-esm/shared-utils';
 import type { AppProps } from 'single-spa';
 import { singleSpaAngular } from 'single-spa-angular';
-import { AppRootComponent } from './app/app-root.component';
+import { DogsAppRootComponent } from './app/app-root.component';
 import { appConfig } from './app/app.config';
 
 if (isDevMode()) {
@@ -13,9 +13,9 @@ if (isDevMode()) {
 
 const lifecycles = singleSpaAngular<AppProps>({
   bootstrapFunction: (/*singleSpaProps: AppProps*/) => {
-    return bootstrapApplication(AppRootComponent, appConfig);
+    return bootstrapApplication(DogsAppRootComponent, appConfig);
   },
-  template: '<app-root />',
+  template: '<dogs-app-root />',
   domElementGetter: () => document.getElementById('single-spa:main') as HTMLElement,
   Router,
   NgZone,
