@@ -5,7 +5,7 @@ import { AssetUrlPipe } from '@single-spa-angular-esm/shared-ng';
 @Component({
   standalone: true,
   imports: [NgOptimizedImage, AssetUrlPipe],
-  selector: 'app-dogs',
+  selector: 'dogs-app',
   template: `
     <div>
       <img

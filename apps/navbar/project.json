@@ -13,12 +13,16 @@
         "outputPath": "dist/apps/navbar",
         "index": "apps/navbar/src/index.html",
         "browser": "apps/navbar/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [],
         "tsConfig": "apps/navbar/tsconfig.app.json",
         "assets": ["apps/navbar/src/assets"],
         "styles": [],
         "plugins": [],
-        "externalDependencies": []
+        "externalDependencies": [
+          "single-spa",
+          "rxjs",
+          "rxjs/operators"
+        ]
       },
       "configurations": {
         "production": {
@@ -39,7 +43,8 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "namedChunks": true
         }
       },
       "defaultConfiguration": "production"
@@ -48,7 +53,7 @@
       "executor": "@nx/angular:dev-server",
       "options": {
         "port": 4203,
-        "hmr": true
+        "prebundle": false
       },
       "configurations": {
         "production": {
