@@ -7,9 +7,9 @@ import { singleSpaAngular } from 'single-spa-angular';
 import { appConfig } from './app/app.config';
 import { NavRootComponent } from './app/nav-root.component';
 
-if (isDevMode()) {
-  loadViteClient();
-}
+// if (isDevMode()) {
+//   loadViteClient();
+// }
 
 const lifecycles = singleSpaAngular<AppProps>({
   bootstrapFunction: (/*singleSpaProps: AppProps*/) => {

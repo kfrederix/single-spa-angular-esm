@@ -17,7 +17,7 @@ export default defineConfig({
   plugins: [
     nxViteTsPaths(),
     externalize({
-      externals: ['single-spa', '@myorg'],
+      externals: ['rxjs', 'rxjs/operators', 'single-spa', '@myorg'],
     }),
   ],
 
@@ -48,7 +48,7 @@ export default defineConfig({
 
     rollupOptions: {
       // externalize deps that shouldn't be bundled into this lib
-      external: ['single-spa', /@myorg\/.*/],
+      external: ['rxjs', 'rxjs/operators', 'single-spa', /@myorg\/.*/],
     },
   },
 });

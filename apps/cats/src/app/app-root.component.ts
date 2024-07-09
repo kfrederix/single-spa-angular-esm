@@ -1,12 +1,12 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AppComponent } from './app.component';
+import { CatsAppComponent } from './app.component';
 
 @Component({
   standalone: true,
-  imports: [AppComponent],
-  selector: 'app-root',
-  template: `<app-main />`,
+  imports: [CatsAppComponent],
+  selector: 'cats-app-root',
+  template: `<cats-app-main />`,
   styleUrls: ['../styles.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class AppRootComponent {}
+export class CatsAppRootComponent {}

@@ -1,0 +1,55 @@
+diff --git a/src/builders/dev-server/vite-server.js b/src/builders/dev-server/vite-server.js
+index 8c83a49f6fad0577d3b4519b5e4e0ce53dd9799e..b811ec05a87c803916f3468f13b04379775ee04f 100644
+--- a/src/builders/dev-server/vite-server.js
++++ b/src/builders/dev-server/vite-server.js
+@@ -332,6 +332,34 @@ function analyzeResultFiles(normalizePath, htmlIndexPath, resultFiles, generated
+         }
+     }
+ }
++
++/**
++ * Creates a plugin to remove prefix from imports injected by Vite.
++ * If module is externalized, Vite will prefix imports with "/\@id/" during development.
++ *
++ * @param externals - The list of external modules
++ *
++ * @returns Vite plugin to remove prefix from imports
++ */
++const modulePrefixTransform = (externals) => ({
++    name: "vite-plugin-remove-id-prefix",
++    transform: (code) => {
++      const viteImportAnalysisModulePrefix = "/@id/";
++      const prefixedImportRegex = new RegExp(
++        `${viteImportAnalysisModulePrefix}(${[...externals].join("|")})`,
++        "g",
++      );
++  
++      if (prefixedImportRegex.test(code)) {
++        return code.replace(
++          prefixedImportRegex,
++          (_, externalName) => externalName,
++        );
++      }
++      return code;
++    },
++});
++
+ async function setupServer(serverOptions, outputFiles, assets, preserveSymlinks, externalMetadata, ssr, prebundleTransformer, target, zoneless, prebundleLoaderExtensions, extensionMiddleware, indexHtmlTransformer, thirdPartySourcemaps = false) {
+     const proxy = await (0, utils_1.loadProxyConfiguration)(serverOptions.workspaceRoot, serverOptions.proxyConfig);
+     // dynamically import Vite for ESM compatibility
+@@ -442,6 +470,15 @@ async function setupServer(serverOptions, outputFiles, assets, preserveSymlinks,
+                 extensionMiddleware,
+                 normalizePath,
+             }),
++            {
++                name: "vite-plugin-externalize-deps",
++                apply: "serve",
++                configResolved: (resolvedConfig) => {
++                    // Plugins are read-only, and should not be modified,
++                    // however modulePrefixTransformPlugin MUST run after vite:import-analysis (which adds the prefix to imports)
++                    resolvedConfig.plugins.push(modulePrefixTransform(externalMetadata.explicit));
++                },
++            }
+         ],
+         // Browser only optimizeDeps. (This does not run for SSR dependencies).
+         optimizeDeps: getDepOptimizationConfig({
