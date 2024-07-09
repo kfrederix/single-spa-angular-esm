@@ -10,7 +10,7 @@
     "build": {
       "executor": "@nx/vite:build",
       "options": {
-        "configFile": "apps/app-shell/vite.config.js",
+        "configFile": "apps/app-shell/vite.config.ts",
         "outputPath": "dist/apps/app-shell",
         "skipTypeCheck": true
       },
