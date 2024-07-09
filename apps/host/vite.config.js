@@ -11,6 +11,9 @@ export default defineConfig({
   // since we only want to build a JS module
   publicDir: false,
 
+  // we don't need any HTML middleware
+  appType: 'custom',
+
   plugins: [
     nxViteTsPaths(),
     externalize({
@@ -37,7 +40,7 @@ export default defineConfig({
     },
 
     lib: {
-      entry: path.resolve(__dirname, 'src/main.js'),
+      entry: path.resolve(__dirname, 'src/main.ts'),
       name: '@myorg/host',
       fileName: 'main',
       formats: ['es'],

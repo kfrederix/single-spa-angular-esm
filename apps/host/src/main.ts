@@ -7,18 +7,21 @@ if (import.meta.env.MODE === 'development') {
 
 registerApplication(
   'navbar',
+  // @ts-expect-error: cannot find module
   () => import('@myorg/navbar'),
   () => true
 );
 
 registerApplication(
   'cats',
+  // @ts-expect-error: cannot find module
   () => import('@myorg/cats'),
   (location) => location.pathname.startsWith('/cats') || ['', '/'].includes(location.pathname)
 );
 
 registerApplication(
   'dogs',
+  // @ts-expect-error: cannot find module
   () => import('@myorg/dogs'),
   (location) => location.pathname.startsWith('/dogs')
 );
