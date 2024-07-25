@@ -17,12 +17,7 @@
         "tsConfig": "apps/cats/tsconfig.app.json",
         "assets": ["apps/cats/src/assets"],
         "styles": [],
-        "plugins": [],
-        "externalDependencies": [
-          "single-spa",
-          "rxjs",
-          "rxjs/operators"
-        ]
+        "plugins": ["tools/esbuild/external-dependencies.plugin.ts"]
       },
       "configurations": {
         "production": {

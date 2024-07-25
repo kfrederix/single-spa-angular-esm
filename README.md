@@ -14,8 +14,8 @@ Goals:
 - [x] Support for external importmaps (thanks to [import-map-injector](https://github.com/single-spa/import-map-injector))
 - [x] Support for overriding importmaps (thanks to [import-map-overrides](https://github.com/single-spa/import-map-overrides))
 - [x] Route-based loading of micro-frontends (handled by [single-spa](https://single-spa.js.org))
-- [x] live-reload functionality during development
-- [ ] TODO: share dependencies between Angular micro-frontends (it seems simply using the `externalDependencies` option with `@nx/angular:application` is not fully working yet...?)
+- [x] Live-reload functionality during development
+- [x] Share dependencies between Angular micro-frontends
 
 
 ## Want to learn more?
@@ -31,7 +31,7 @@ To get started, first we need to install our dependencies:
 pnpm i
 ```
 
-> NOTE: I chose `pnpm` for this repo because of personal preference, but nothing should stop us from using plain `npm`, `yarn` or even `bun`.
+> NOTE: `pnpm` has a nice patch feature, which I use sometimes to unblock Nx or Angular upgrades: https://pnpm.io/cli/patch.
 
 To run the application, we need to start the dev-server on each of the apps in the repo:
  - the app-shell (the root html file with importmaps etc)
