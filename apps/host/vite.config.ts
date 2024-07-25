@@ -1,7 +1,9 @@
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import path from 'path';
 import { defineConfig } from 'vite';
-import externalize from "vite-plugin-externalize-dependencies";
+import externalize from 'vite-plugin-externalize-dependencies';
+
+const externals = ['rxjs', 'rxjs/operators', 'single-spa', /@myorg\/.*/];
 
 export default defineConfig({
   root: 'src',
@@ -14,12 +16,7 @@ export default defineConfig({
   // we don't need any HTML middleware
   appType: 'custom',
 
-  plugins: [
-    nxViteTsPaths(),
-    externalize({
-      externals: ['rxjs', 'rxjs/operators', 'single-spa', '@myorg'],
-    }),
-  ],
+  plugins: [nxViteTsPaths(), externalize({ externals })],
 
   server: {
     port: 4200,
@@ -48,7 +45,7 @@ export default defineConfig({
 
     rollupOptions: {
       // externalize deps that shouldn't be bundled into this lib
-      external: ['rxjs', 'rxjs/operators', 'single-spa', /@myorg\/.*/],
+      external: externals,
     },
   },
 });

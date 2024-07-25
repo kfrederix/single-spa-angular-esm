@@ -17,11 +17,7 @@
         "tsConfig": "apps/dogs/tsconfig.app.json",
         "assets": ["apps/dogs/src/assets"],
         "styles": [],
-        "externalDependencies": [
-          "single-spa",
-          "rxjs",
-          "rxjs/operators"
-        ]
+        "plugins": ["tools/esbuild/external-dependencies.plugin.ts"]
       },
       "configurations": {
         "production": {

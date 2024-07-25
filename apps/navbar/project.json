@@ -17,12 +17,7 @@
         "tsConfig": "apps/navbar/tsconfig.app.json",
         "assets": ["apps/navbar/src/assets"],
         "styles": [],
-        "plugins": [],
-        "externalDependencies": [
-          "single-spa",
-          "rxjs",
-          "rxjs/operators"
-        ]
+        "plugins": ["tools/esbuild/external-dependencies.plugin.ts"]
       },
       "configurations": {
         "production": {
