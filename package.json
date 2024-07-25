@@ -5,6 +5,8 @@
   "packageManager": "pnpm@9.1.1",
   "scripts": {
     "dev": "nx run-many -t serve --parallel=5",
+    "serve": "nx serve",
+    "build": "nx build",
     "build-all": "nx run-many -t build",
     "prepare-deploy": "pnpm build-all && node -r @swc-node/register ./tools/ci/pack.ts"
   },
