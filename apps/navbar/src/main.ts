@@ -1,4 +1,4 @@
-import { NgZone, isDevMode } from '@angular/core';
+import { NgZone } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { NavigationStart, Router } from '@angular/router';
 import { loadViteClient } from '@single-spa-angular-esm/shared-utils';
@@ -7,7 +7,7 @@ import { singleSpaAngular } from 'single-spa-angular';
 import { appConfig } from './app/app.config';
 import { NavRootComponent } from './app/nav-root.component';
 
-if (isDevMode()) {
+if (import.meta.env?.MODE === 'development') {
   loadViteClient();
 }
 

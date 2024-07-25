@@ -27,4 +27,7 @@ const mfApps = ['navbar', 'cats', 'dogs'];
   await fs.move(join(deployDir, 'importmaps/importmap-mf.prod.json'), join(deployDir, 'importmaps/importmap-mf.json'), {
     overwrite: true,
   });
+  await fs.move(join(deployDir, 'importmaps/importmap-shared.prod.json'), join(deployDir, 'importmaps/importmap-shared.json'), {
+    overwrite: true,
+  });
 })();
