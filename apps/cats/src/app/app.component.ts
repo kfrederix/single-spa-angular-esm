@@ -6,7 +6,7 @@ import { CatsComponent } from './cats/cats.component';
   imports: [CatsComponent],
   selector: 'cats-app-main',
   template: `
-    <section class="h-full p-7 bg-[#C8F5DD]">
+    <section class="h-full p-7 bg-[rgb(135,150,101)]">
       <cats-app />
     </section>
   `,
