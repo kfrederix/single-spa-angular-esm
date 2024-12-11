@@ -10,8 +10,8 @@ import { AssetUrlPipe } from '@single-spa-angular-esm/shared-ng';
     <div>
       <img
         class="rounded-xl"
-        [ngSrc]="'cats/shutterstock_halloween_cat_2193834537.jpg' | assetUrl"
-        width="800"
+        [ngSrc]="'cats/cat.jpg' | assetUrl"
+        width="600"
         height="600"
         priority
       />
