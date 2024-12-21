@@ -26,4 +26,4 @@ registerApplication(
   (location) => location.pathname.startsWith('/dogs')
 );
 
-start();
+start({ urlRerouteOnly: false });
