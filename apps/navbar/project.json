@@ -48,7 +48,8 @@
       "executor": "@nx/angular:dev-server",
       "options": {
         "port": 4203,
-        "prebundle": false
+        "prebundle": false,
+        "hmr": false
       },
       "configurations": {
         "production": {
