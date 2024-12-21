@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { DogsComponent } from './dogs/dogs.component';
 
 @Component({
-  standalone: true,
   imports: [DogsComponent],
   selector: 'dogs-app-main',
   template: `

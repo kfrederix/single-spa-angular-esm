@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CatsComponent } from './cats/cats.component';
 
 @Component({
-  standalone: true,
   imports: [CatsComponent],
   selector: 'cats-app-main',
   template: `

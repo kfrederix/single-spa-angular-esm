@@ -10,7 +10,6 @@ const routes = [
 ] as const;
 
 @Component({
-  standalone: true,
   imports: [NgClass],
   selector: 'nav-main',
   template: `
