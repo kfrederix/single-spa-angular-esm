@@ -12,9 +12,15 @@ const externalDepsEsbuildPlugin = {
   name: 'externalize-deps',
   setup(build) {
     const options = build.initialOptions;
+
+    // Externalize npm deps only for production builds.
+    // This provides a better dev experience with clear error messages
+    // (use "minifySyntax" as a heuristic for production mode)
+    const isProductionMode = build.initialOptions.minifySyntax ?? false;
+
     options.external = mergeExternals([
       options.external ?? [],
-      extractExternalsFromImportmap(importmapShared),
+      isProductionMode ? extractExternalsFromImportmap(importmapShared) : [],
     ]);
   },
 } satisfies Plugin;
