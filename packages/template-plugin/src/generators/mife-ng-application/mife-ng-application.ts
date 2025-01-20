@@ -5,7 +5,7 @@ import { MifeNgApplicationGeneratorSchema } from './schema';
 export async function mifeNgApplicationGenerator(tree: Tree, options: MifeNgApplicationGeneratorSchema) {
   const templateNames = names(options.name)
   const projectRoot = `${options.directory}/${templateNames.fileName}`;
-  generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {template: '', ...templateNames, projectRoot});
+  generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {template: '', ...templateNames, ...options});
   await formatFiles(tree);
 }
 

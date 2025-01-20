@@ -3,19 +3,19 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "<%= fileName %>",
-  "sourceRoot": "<%= projectRoot %>/<%= fileName %>/src",
+  "sourceRoot": "<%= directory %>/<%= fileName %>/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/<%= projectRoot %>/<%= fileName %>",
-        "index": "<%= projectRoot %>/<%= fileName %>/src/index.html",
-        "browser": "<%= projectRoot %>/<%= fileName %>/src/main.ts",
+        "outputPath": "dist/<%= directory %>/<%= fileName %>",
+        "index": "<%= directory %>/<%= fileName %>/src/index.html",
+        "browser": "<%= directory %>/<%= fileName %>/src/main.ts",
         "polyfills": [],
-        "tsConfig": "<%= projectRoot %>/<%= fileName %>/tsconfig.app.json",
-        "assets": ["<%= projectRoot %>/<%= fileName %>/src/assets"],
+        "tsConfig": "<%= directory %>/<%= fileName %>/tsconfig.app.json",
+        "assets": ["<%= directory %>/<%= fileName %>/src/assets"],
         "styles": [],
         "plugins": ["tools/esbuild/external-dependencies.plugin.ts"]
       },
@@ -72,9 +72,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": ["{workspaceRoot}/coverage/{directory}"],
       "options": {
-        "jestConfig": "<%= projectRoot %>/<%= fileName %>/jest.config.ts"
+        "jestConfig": "<%= directory %>/<%= fileName %>/jest.config.ts"
       }
     }
   }
