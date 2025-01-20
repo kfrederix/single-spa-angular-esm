@@ -1,11 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { DogsAppComponent } from './app.component';
+import { <%= className %>AppComponent } from './app.component';
 
 @Component({
   imports: [DogsAppComponent],
-  selector: 'dogs-app-root',
-  template: `<dogs-app-main />`,
+  selector: '<%= fileName %>-app-root',
+  template: `<<%= fileName %>-app-main />`,
   styleUrls: ['../styles.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class DogsAppRootComponent {}
+export class <%= className %>AppRootComponent {}

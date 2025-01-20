@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { DogsComponent } from './dogs/dogs.component';
+import { <%= className %>Component } from './dogs/dogs.component';
 
 @Component({
-  imports: [DogsComponent],
-  selector: 'dogs-app-main',
+  imports: [<%= className %>Component],
+  selector: '<%= fileName %>-app-main',
   template: ``,
 })
-export class DogsAppComponent {}
+export class <%= className %>AppComponent {}

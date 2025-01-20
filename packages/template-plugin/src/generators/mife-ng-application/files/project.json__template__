@@ -1,21 +1,21 @@
 {
-  "name": "dogs",
+  "name": "<%= fileName %>",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "dogs",
-  "sourceRoot": "apps/dogs/src",
+  "prefix": "<%= fileName %>",
+  "sourceRoot": "<%= projectRoot %>/<%= fileName %>/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/dogs",
-        "index": "apps/dogs/src/index.html",
-        "browser": "apps/dogs/src/main.ts",
+        "outputPath": "dist/<%= projectRoot %>/<%= fileName %>",
+        "index": "<%= projectRoot %>/<%= fileName %>/src/index.html",
+        "browser": "<%= projectRoot %>/<%= fileName %>/src/main.ts",
         "polyfills": [],
-        "tsConfig": "apps/dogs/tsconfig.app.json",
-        "assets": ["apps/dogs/src/assets"],
+        "tsConfig": "<%= projectRoot %>/<%= fileName %>/tsconfig.app.json",
+        "assets": ["<%= projectRoot %>/<%= fileName %>/src/assets"],
         "styles": [],
         "plugins": ["tools/esbuild/external-dependencies.plugin.ts"]
       },
@@ -53,10 +53,10 @@
       },
       "configurations": {
         "production": {
-          "buildTarget": "dogs:build:production"
+          "buildTarget": "<%= fileName %>:build:production"
         },
         "development": {
-          "buildTarget": "dogs:build:development"
+          "buildTarget": "<%= fileName %>:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -64,7 +64,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "dogs:build"
+        "buildTarget": "<%= fileName %>:build"
       }
     },
     "lint": {
@@ -74,7 +74,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/dogs/jest.config.ts"
+        "jestConfig": "<%= projectRoot %>/<%= fileName %>/jest.config.ts"
       }
     }
   }

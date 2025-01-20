@@ -3,11 +3,11 @@ import { Route } from '@angular/router';
 export const appRoutes: Route[] = [
   {
     path: '',
-    redirectTo: 'dogs',
+    redirectTo: '<%= fileName %>',
     pathMatch: 'full',
   },
   {
-    path: 'dogs',
+    path: '<%= fileName %>',
     children: [],
   },
   {
