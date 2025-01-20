@@ -1,4 +1,5 @@
 export interface MifeNgApplicationGeneratorSchema {
   name: string;
-  directory: string
+  directory: string;
+  port: number;
 }

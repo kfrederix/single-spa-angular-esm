@@ -47,7 +47,7 @@
     "serve": {
       "executor": "@nx/angular:dev-server",
       "options": {
-        "port": 4202,
+        "port": <%= port %>,
         "prebundle": false,
         "hmr": false
       },

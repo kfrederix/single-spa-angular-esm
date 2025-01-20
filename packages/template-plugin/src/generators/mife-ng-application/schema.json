@@ -11,9 +11,14 @@
     },
     "directory": {
       "type": "string",
-      "description": "The directory where the application should be created.",
-      "x-prompt": "In which directory should the application be created?"
+      "description": "The relative directory where the application should be created.",
+      "x-prompt": "In which relative directory should the application be created?"
+    },
+    "port": {
+      "type": "number",
+      "description": "The port to serve the application (should be uniq).",
+      "x-prompt": "In which port should the application be served? (should be uniq)"
     }
   },
-  "required": ["name", "directory"]
+  "required": ["name", "directory", "port"]
 }
