@@ -76,6 +76,12 @@
     },
     "@nx/angular:component": {
       "style": "css"
+    },
+    "@myorg/template-plugin": {
+      "mife-ng-application": {
+        "schema": "./src/generators/mife-ng-application/schema.json",
+        "implementation": "./src/generators/mife-ng-application/generator.ts"
+      }
     }
   },
   "plugins": [
