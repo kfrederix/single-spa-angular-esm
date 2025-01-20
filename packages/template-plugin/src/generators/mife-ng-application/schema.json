@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "MifeNgApplication",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the application.",
+      "x-prompt": "What is the name of the application?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "The directory where the application should be created.",
+      "x-prompt": "In which directory should the application be created?"
+    }
+  },
+  "required": ["name", "directory"]
+}

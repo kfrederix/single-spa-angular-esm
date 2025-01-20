@@ -24,7 +24,8 @@
     "baseUrl": ".",
     "paths": {
       "@single-spa-angular-esm/shared-ng": ["libs/shared/shared-ng/src/index.ts"],
-      "@single-spa-angular-esm/shared-utils": ["libs/shared/utils/src/index.ts"]
+      "@single-spa-angular-esm/shared-utils": ["libs/shared/utils/src/index.ts"],
+      "@single-spa-angular-esm/template-plugin": ["packages/template-plugin/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

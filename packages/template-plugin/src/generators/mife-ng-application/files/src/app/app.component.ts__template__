@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+import { DogsComponent } from './dogs/dogs.component';
+
+@Component({
+  imports: [DogsComponent],
+  selector: 'dogs-app-main',
+  template: ``,
+})
+export class DogsAppComponent {}
