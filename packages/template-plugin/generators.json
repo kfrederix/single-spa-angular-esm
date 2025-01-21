@@ -3,7 +3,7 @@
     "mife-ng-application": {
       "factory": "./src/generators/mife-ng-application/mife-ng-application",
       "schema": "./src/generators/mife-ng-application/schema.json",
-      "description": "mife-ng-application generator"
+      "description": "Generator for creating angular mife that compatible with this project template"
     }
   }
 }
