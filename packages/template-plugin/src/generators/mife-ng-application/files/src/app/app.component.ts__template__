@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  imports: [<%= className %>Component],
+  imports: [],
   selector: '<%= fileName %>-app-main',
   template: `<h1>This is my mife angular application!</h1>`,
 })

@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { <%= className %>AppComponent } from './app.component';
 
 @Component({
-  imports: [DogsAppComponent],
+  imports: [<%= className %>AppComponent],
   selector: '<%= fileName %>-app-root',
   template: `<<%= fileName %>-app-main />`,
   styleUrls: ['../styles.css'],
