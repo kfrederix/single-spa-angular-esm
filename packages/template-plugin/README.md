@@ -20,13 +20,18 @@ The mife-ng-application generator is a custom Nx generator designed to create a 
   nx generate @single-spa-angular-esm/template-plugin:mife-ng-application --name=<application-name> --port=<port-number> --directory=<directory>
   ```
 
-   - Replace <application-name> with the desired name of your application.
-   - Replace <port-number> with the port to be used for the development server. 
-   - Replace <directory> with the path where the application should be created (e.g., apps). 
+   - Replace `<application-name>` with the desired name of your application.
+   - Replace `<port-number>` with the port to be used for the development server. 
+   - Replace `<directory>` with the path where the application should be create (eg., apps). 
+   - add `--help` for additional properties  
   
   ### Example: 
   ```bash 
   nx generate @single-spa-angular-esm/template-plugin:mife-ng-application --name=my-app --port=4201 --directory=apps
   ```
-  
-   --- 
+
+  ### Using the UI
+
+  you can also use the generator with the NX console extension.
+
+  ---
