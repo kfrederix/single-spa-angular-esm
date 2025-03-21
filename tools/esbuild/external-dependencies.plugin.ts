@@ -1,5 +1,5 @@
 import type { Plugin } from 'esbuild';
-import importmapShared from '../../apps/app-shell/public/importmaps/importmap-shared.json';
+import importmapShared from '../../import-maps/importmap-shared.json';
 
 type Importmap = {
   imports: Record<string, string>;

@@ -22,12 +22,4 @@ const mfApps = ['navbar', 'cats', 'dogs'];
   for (const mf of mfApps) {
     await fs.copy(join(workspaceRoot, `dist/apps/${mf}/browser`), join(deployDir, `mf/${mf}`));
   }
-
-  // apply prod importmap (uses relative paths)
-  await fs.move(join(deployDir, 'importmaps/importmap-mf.prod.json'), join(deployDir, 'importmaps/importmap-mf.json'), {
-    overwrite: true,
-  });
-  await fs.move(join(deployDir, 'importmaps/importmap-shared.prod.json'), join(deployDir, 'importmaps/importmap-shared.json'), {
-    overwrite: true,
-  });
 })();

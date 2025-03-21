@@ -16,7 +16,8 @@
       "defaultConfiguration": "production",
       "configurations": {
         "development": {
-          "watch": true
+          "watch": true,
+          "mode": "development"
         },
         "production": {
           "watch": false

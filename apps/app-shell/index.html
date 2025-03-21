@@ -5,34 +5,37 @@
     <title>Single-Spa with native ESM</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-    <!-- Makes import-map-override work together with import-map-injector -->
-    <meta name="importmap-type" content="injector-importmap" />
+
+    <!-- native import map -->
+    <meta name="importmap-type" content="importmap" />
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css" integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="/src/styles.css" />
 
     <!-- Zone.js must be loaded first (in any case before es-module-shims if we would use that) -->
     <script src="https://unpkg.com/zone.js@0.14.4/bundles/zone.umd.min.js"></script>
 
-    <!-- importmap for 3rd-party modules like single-spa -->
-    <script type="injector-importmap" src="importmaps/importmap-shared.json"></script>
-    
-    <!-- importmap for our own micro-frontend apps -->
-    <script type="injector-importmap" src="importmaps/importmap-mf.json"></script>
+    <!--
+      The import maps specification only allows for a single import map per web page.
+      (support for multiple import maps is coming, but still experimental)
+      See: https://github.com/single-spa/import-map-overrides/blob/main/docs/configuration.md#client-side-single-map
+    -->
+    <script type="overridable-importmap">
+      <%- importMap %>
+    </script>
 
     <!--
       Make sure to put this BEFORE any <script type="module"> elements or any import() calls, but
       AFTER all other import maps
     -->
-    <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@3.1.1/dist/import-map-overrides.js"></script>
-
-    <!--
-      IMPORTANT: import-map-injector must be loaded AFTER import-map-overrides
-    -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@single-spa/import-map-injector"></script> -->
-    <script src="npm/import-map-injector/import-map-injector.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
   </head>
   <body>
     <header>
@@ -45,14 +48,9 @@
       <div id="single-spa:main" class="main-mf-container"></div>
     </main>
 
-    <!--
-      Since we use external import maps, the import map is installed asynchronously and so we must wait for import map installation
-      before loading modules with <script type="module"> or import()
-    -->
+    <!-- Load module @myorg/host, which will start single-spa -->
     <script>
-      window.importMapInjector.initPromise.then(() => {
-        import(/* @vite-ignore */ '@myorg/host');
-      });
+      import(/* @vite-ignore */ '@myorg/host');
     </script>
 
     <!-- optionally include the UI for import map overrides -->

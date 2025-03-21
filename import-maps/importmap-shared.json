@@ -1,0 +1,26 @@
+{
+  "imports": {
+    "@angular/animations": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-animations.js",
+    "@angular/animations/browser": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-animations-browser.js",
+    "@angular/common": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-common.js",
+    "@angular/common/http": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-common-http.js",
+    "@angular/compiler": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-compiler.js",
+    "@angular/core": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-core.js",
+    "@angular/core/primitives/event-dispatch": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-core-primitives-event-dispatch.js",
+    "@angular/core/primitives/signals": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-core-primitives-signals.js",
+    "@angular/core/rxjs-interop": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-core-rxjs-interop.js",
+    "@angular/forms": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-forms.js",
+    "@angular/platform-browser": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-platform-browser.js",
+    "@angular/platform-browser/animations": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-platform-browser-animations.js",
+    "@angular/platform-browser/animations/async": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-platform-browser-animations-async.js",
+    "@angular/platform-browser-dynamic": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-platform-browser-dynamic.js",
+    "@angular/router": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular@19.2.0/es2022/angular-router.js",
+    "rxjs": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs@7.8.1/esm/es2015/rxjs.min.js",
+    "rxjs/operators": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs@7.8.1/esm/es2015/rxjs-operators.min.js",
+    "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.1/lib/es2015/esm/single-spa.dev.js",
+    "single-spa-angular": "https://cdn.jsdelivr.net/npm/@esm-bundle/single-spa-angular@9.1.2/es2022/single-spa-angular.js",
+    "single-spa-angular/elements": "https://cdn.jsdelivr.net/npm/@esm-bundle/single-spa-angular@9.1.2/es2022/single-spa-angular-elements.js",
+    "single-spa-angular/internals": "https://cdn.jsdelivr.net/npm/@esm-bundle/single-spa-angular@9.1.2/es2022/single-spa-angular-internals.js",
+    "single-spa-angular/parcel": "https://cdn.jsdelivr.net/npm/@esm-bundle/single-spa-angular@9.1.2/es2022/single-spa-angular-parcel.js"
+  }
+}
