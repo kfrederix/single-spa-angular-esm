@@ -14,20 +14,20 @@ Since esbuild does not support SystemJS as an output format (and likely never wi
 
 Since we don't need to support Internet Explorer anymore, we can now confidently rely on `<script type="importmap">` being [natively supported by all modern browsers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap).
 
-However, there are 3 features that we would like to incorporate in our architecture that are currently not supported by native importmap implementations:
+However, be aware that browser-native import maps still have some limitations:
 
-- external importmaps: i.e. `<script type="importmap" src="...">`
-- multiple importmaps: native browser implementations support only 1 importmap
-- importmap overrides: we want to enable developers to override certain modules on deployed environments, which creates a really nice dev experience.
+- **multiple importmaps**: support for multiple import maps is coming. It already landed for Chrome but not yet for Firefox or Safari (at the time of writing this)
+- **external importmaps**: this is not supported (i.e. `<script type="importmap" src="...">`)
 
-To overcome these native importmap limitations, 2 possible solutions come to mind:
+The current implementation in this repo works with a full-native single importmap which is injected into the root html file at build time. I currently recommend sticking to a single, inline, native import map if you can because it avoids additional network roundtrips to fetch the importmaps before your application can start bootstrapping. However, if such an approach does not align with your envisioned architecture, then the following 2 options can provide a possible solution:
 
-- [es-module-shims](https://github.com/guybedford/es-module-shims) can be used in `shimMode` to add all these features. The downside is that this introduces a very small (~5ms) performance hit. Even though this hit might be negligable, it would be nice if we could stick with pure native ES modules instead.
-- [import-map-injector](https://github.com/single-spa/import-map-injector) combines multiple `<script type="injector-importmap">` elements into 1 final `<script type="importmap">` In this way, it adds support for both multiple and external importmaps.
+- [es-module-shims](https://github.com/guybedford/es-module-shims) can be used in `shimMode` to add all these features at the cost of a _very_ minimal performance hit. I think this is probably negligable when you already accept the added network-roundtrips as well. (+ you must use the `importShim()` function instead of `import()` for all dynamic imports)
+- [import-map-injector](https://github.com/single-spa/import-map-injector) can combine multiple `<script type="injector-importmap">` elements into 1 final `<script type="importmap">` In this way, it adds support for both multiple and external importmaps. One downside with import-map-injector is that it only works when your import maps are served with Content-Type `application/json+importmap` (i.e. you can't use normal json files for the import maps).
 
-By choosing for the `import-map-injector` approach, we get all the features that we want, while staying as native to the browser as possible.
+## Overriding specific modules on deployed environments
 
-Finally, to enable override of importmap modules, we use [import-map-overrides](https://github.com/single-spa/import-map-overrides). This can work together with `import-map-injector` just fine, but it's important to note that the import-map-override script must be loaded before import-map-injector (which makes sense of course because the injector script will only run once and it assumes that all `<script type="injector-importmap">` elements are present in the DOM before it runs).
+We want to enable developers to override certain modules on deployed environments, because this creates a really nice dev experience.
+To make this possible, we use [import-map-overrides](https://github.com/single-spa/import-map-overrides). (Note: this can also work together with es-module-shims or import-map-injector just fine)
 
 ## Additional challenges
 
@@ -110,6 +110,6 @@ Note that we referenced our global stylesheet from this wrapper component, in co
 By piecing together all of the above, we can achieve an architecture that is ideal to handle our needs:
 
 - Angular micro-frontend apps, served/bundled as pure ES Modules by Vite/esbuild
-- Native browser importmap support, enhanced by import-map-injector
+- Native browser importmap support
 - Route-based loading of micro-frontends handled by [single-spa](https://single-spa.js.org)
 - live-reload functionality handled by manually importing `@vite/client` from our MF modules at runtime (only during development)
