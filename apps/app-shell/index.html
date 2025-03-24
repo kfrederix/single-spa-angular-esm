@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -6,21 +6,16 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- native import map -->
+    <!-- configure import-map-overrides to use native import map -->
     <meta name="importmap-type" content="importmap" />
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
-      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css" />
     <link rel="stylesheet" href="/src/styles.css" />
 
-    <!-- Zone.js must be loaded first (in any case before es-module-shims if we would use that) -->
-    <script src="https://unpkg.com/zone.js@0.14.4/bundles/zone.umd.min.js"></script>
+    <!-- load Zone.js -->
+    <script src="https://cdn.jsdelivr.net/npm/zone.js@0.15.0/bundles/zone.umd.min.js"></script>
 
     <!--
       The import maps specification only allows for a single import map per web page.

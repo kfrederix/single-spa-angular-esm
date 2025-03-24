@@ -1,10 +1,10 @@
+import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { defineConfig } from 'vite';
 import { ViteEjsPlugin } from 'vite-plugin-ejs';
-import { buildImportMap } from '../../tools/import-map/build-import-map.util';
+import { buildImportMap } from './src/build-import-map.util';
 
 export default defineConfig(({ mode }) => {
-  const importMap = buildImportMap(mode === 'production');
-  const importMapJson = JSON.stringify(importMap, null, 2);
+  const importMap = buildImportMap(mode);
 
   return {
     root: __dirname,
@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
       host: 'localhost',
     },
 
-    plugins: [ViteEjsPlugin({ importMap: importMapJson })],
+    plugins: [nxViteTsPaths(), ViteEjsPlugin({ importMap: JSON.stringify(importMap, null, 2) })],
 
     build: {
       outDir: '../../dist/apps/app-shell',

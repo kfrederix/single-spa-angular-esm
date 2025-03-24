@@ -9,21 +9,21 @@ registerApplication(
   'navbar',
   // @ts-expect-error: cannot find module
   () => import('@myorg/navbar'),
-  () => true
+  () => true,
 );
 
 registerApplication(
   'cats',
   // @ts-expect-error: cannot find module
   () => import('@myorg/cats'),
-  (location) => location.pathname.startsWith('/cats') || ['', '/'].includes(location.pathname)
+  (location) => location.pathname.startsWith('/cats') || ['', '/'].includes(location.pathname),
 );
 
 registerApplication(
   'dogs',
   // @ts-expect-error: cannot find module
   () => import('@myorg/dogs'),
-  (location) => location.pathname.startsWith('/dogs')
+  (location) => location.pathname.startsWith('/dogs'),
 );
 
 start({ urlRerouteOnly: false });

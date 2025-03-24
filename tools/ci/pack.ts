@@ -3,23 +3,23 @@ import fs from 'fs-extra';
 import { join } from 'path';
 
 const deployDir = join(workspaceRoot, 'dist/deploy');
-const mfApps = ['navbar', 'cats', 'dogs'];
+const mfModules = [
+  { moduleName: '@myorg/host', distFolder: 'dist/apps/host' },
+  { moduleName: '@myorg/navbar', distFolder: 'dist/apps/navbar/browser' },
+  { moduleName: '@myorg/cats', distFolder: 'dist/apps/cats/browser' },
+  { moduleName: '@myorg/dogs', distFolder: 'dist/apps/dogs/browser' },
+];
+const appShellDistFolder = 'dist/apps/app-shell';
 
 (async function pack() {
   // ensure that deployDir exists and is empty
   await fs.emptyDir(deployDir);
 
   // copy app-shell first
-  await fs.copy(join(workspaceRoot, 'dist/apps/app-shell'), deployDir);
+  await fs.copy(join(workspaceRoot, appShellDistFolder), deployDir);
 
-  // create dir for micro-frontends
-  await fs.ensureDir(join(deployDir, 'mf'));
-
-  // copy "host" module
-  await fs.copy(join(workspaceRoot, 'dist/apps/host'), join(deployDir, 'mf/host'));
-
-  // copy all MF apps
-  for (const mf of mfApps) {
-    await fs.copy(join(workspaceRoot, `dist/apps/${mf}/browser`), join(deployDir, `mf/${mf}`));
+  // copy all modules (host + micro-frontend apps)
+  for (const mf of mfModules) {
+    await fs.copy(join(workspaceRoot, mf.distFolder), join(deployDir, `mf/${mf.moduleName}`));
   }
 })();

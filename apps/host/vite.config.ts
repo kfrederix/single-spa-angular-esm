@@ -6,7 +6,7 @@ import externalize from 'vite-plugin-externalize-dependencies';
 const externals = ['rxjs', 'rxjs/operators', 'single-spa', /@myorg\/.*/];
 
 export default defineConfig({
-  root: 'src',
+  root: __dirname,
   cacheDir: path.join(__dirname, '../../node_modules/.vite/apps/host'),
 
   // we are not interested in copying static assets from the public dir
@@ -21,6 +21,12 @@ export default defineConfig({
   server: {
     port: 4200,
     host: 'localhost',
+    proxy: {
+      '/main.js': {
+        target: 'http://localhost:4200',
+        rewrite: (path) => path.replace('main.js', 'src/main.ts'),
+      },
+    },
   },
 
   preview: {
@@ -37,7 +43,7 @@ export default defineConfig({
     },
 
     lib: {
-      entry: path.resolve(__dirname, 'src/main.ts'),
+      entry: 'src/main.ts',
       name: '@myorg/host',
       fileName: 'main',
       formats: ['es'],
@@ -46,6 +52,10 @@ export default defineConfig({
     rollupOptions: {
       // externalize deps that shouldn't be bundled into this lib
       external: externals,
+      output: {
+        entryFileNames: '[name].js',
+        chunkFileNames: '[name]-[hash].js',
+      },
     },
   },
 });

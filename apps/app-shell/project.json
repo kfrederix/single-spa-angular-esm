@@ -3,10 +3,10 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/app-shell/src",
-  "// serve": "we use preview-server for the 'serve' target because we don't want Vite to insert the <script type='module' src='@vite/client'> element. The reason is that we use external importmaps and import-map-injector is therefore adding the final importmap asynchronously. That means we can not have any <script type'module'> until the final importmap is added",
   "tags": [],
   "targets": {
     "build": {
+      "dependsOn": ["build-shared-deps"],
       "executor": "@nx/vite:build",
       "options": {
         "configFile": "apps/app-shell/vite.config.ts",
@@ -31,6 +31,18 @@
         "port": 4300
       },
       "dependsOn": ["build"]
+    },
+    "build-shared-deps": {
+      "executor": "nx:run-commands",
+      "inputs": [
+        { "fileset": "{projectRoot}/**/*" },
+        { "fileset": "{workspaceRoot}/libs/import-maps/**/*.ts" },
+        { "fileset": "{workspaceRoot}/tools/import-map/**/*.ts" },
+        { "fileset": "{workspaceRoot}/package.json" }
+      ],
+      "options": {
+        "command": "pnpm jiti tools/shared-dependencies/build-shared-dependencies.ts"
+      }
     }
   }
 }

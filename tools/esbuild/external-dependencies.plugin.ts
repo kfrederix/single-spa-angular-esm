@@ -1,11 +1,6 @@
 import type { Plugin } from 'esbuild';
-import importmapShared from '../../import-maps/importmap-shared.json';
+import { sharedDependencies } from '../shared-dependencies/shared-dependencies.const';
 
-type Importmap = {
-  imports: Record<string, string>;
-};
-
-const extractExternalsFromImportmap = (importmap: Importmap): string[] => Object.keys(importmap.imports);
 const mergeExternals = (allExternals: string[][]): string[] => Array.from(new Set(allExternals.flat()));
 
 const externalDepsEsbuildPlugin = {
@@ -18,10 +13,7 @@ const externalDepsEsbuildPlugin = {
     // (use "minifySyntax" as a heuristic for production mode)
     const isProductionMode = build.initialOptions.minifySyntax ?? false;
 
-    options.external = mergeExternals([
-      options.external ?? [],
-      isProductionMode ? extractExternalsFromImportmap(importmapShared) : [],
-    ]);
+    options.external = mergeExternals([options.external ?? [], isProductionMode ? sharedDependencies : []]);
   },
 } satisfies Plugin;
 

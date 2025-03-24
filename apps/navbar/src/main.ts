@@ -16,8 +16,7 @@ const lifecycles = singleSpaAngular<AppProps>({
     return bootstrapApplication(NavRootComponent, appConfig);
   },
   template: '<nav-root />',
-  domElementGetter: () =>
-    document.getElementById('single-spa:nav') as HTMLElement,
+  domElementGetter: () => document.getElementById('single-spa:nav') as HTMLElement,
   Router,
   NgZone,
   NavigationStart,

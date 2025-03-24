@@ -5,9 +5,5 @@ import { getSingleSpaExtraProviders } from 'single-spa-angular';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideHttpClient(),
-    provideRouter(appRoutes),
-    getSingleSpaExtraProviders(),
-  ],
+  providers: [provideHttpClient(), provideRouter(appRoutes), getSingleSpaExtraProviders()],
 };
