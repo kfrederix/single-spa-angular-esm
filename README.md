@@ -4,7 +4,7 @@
 
 ## What is this?
 
-This is an example Nx monorepo demonstrating how single-spa can be used for microfrontends with the new Angular builder based on Vite/esbuild.
+This is an example repo, demonstrating how single-spa can be used for microfrontends with the new Angular builder based on Vite/esbuild. The repo is structured as a monorepo, powered by Nx. This structure makes at very convenient to get a good understanding of the entire set-up and how everything works together. The main principles shown here, should also apply even when you have separate repos for each micro-frontend.
 
 Goals:
 
