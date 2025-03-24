@@ -9,7 +9,7 @@
       "dependsOn": ["build-shared-deps"],
       "executor": "@nx/vite:build",
       "options": {
-        "configFile": "apps/app-shell/vite.config.ts",
+        "configFile": "apps/app-shell/vite.config.mts",
         "outputPath": "dist/apps/app-shell",
         "skipTypeCheck": true
       },
