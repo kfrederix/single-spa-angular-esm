@@ -37,7 +37,7 @@
       "inputs": [
         { "fileset": "{projectRoot}/**/*" },
         { "fileset": "{workspaceRoot}/libs/import-maps/**/*.ts" },
-        { "fileset": "{workspaceRoot}/tools/import-map/**/*.ts" },
+        { "fileset": "{workspaceRoot}/tools/shared-dependencies/**/*.ts" },
         { "fileset": "{workspaceRoot}/package.json" }
       ],
       "options": {
