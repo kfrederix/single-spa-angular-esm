@@ -8,7 +8,7 @@
     "serve": "nx serve",
     "build": "nx build",
     "build-all": "nx run-many -t build",
-    "prepare-deploy": "pnpm build-all && node -r @swc-node/register ./tools/ci/pack.ts"
+    "prepare-deploy": "pnpm build-all && jiti ./tools/ci/pack.ts"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +20,7 @@
     "@angular/platform-browser": "19.2.2",
     "@angular/platform-browser-dynamic": "19.2.2",
     "@angular/router": "19.2.2",
+    "@babel/core": "^7.26.10",
     "rxjs": "~7.8.0",
     "single-spa": "^6.0.1",
     "single-spa-angular": "^9.0.1",
@@ -70,7 +71,7 @@
     "jsdom": "~22.1.0",
     "nx": "20.6.1",
     "postcss": "^8.4.38",
-    "prettier": "^2.6.2",
+    "prettier": "^3.5.3",
     "swc-loader": "0.1.15",
     "tailwindcss": "^3.4.3",
     "ts-jest": "^29.1.0",
