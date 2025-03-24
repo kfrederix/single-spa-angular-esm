@@ -23,6 +23,7 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
+      "@single-spa-angular-esm/import-map-tools": ["libs/import-map-tools/src/index.ts"],
       "@single-spa-angular-esm/shared-ng": ["libs/shared/shared-ng/src/index.ts"],
       "@single-spa-angular-esm/shared-utils": ["libs/shared/utils/src/index.ts"]
     }
