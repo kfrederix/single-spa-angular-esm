@@ -1,4 +1,3 @@
-import { NgZone } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { NavigationStart, Router } from '@angular/router';
 import { loadViteClient } from '@single-spa-angular-esm/shared-utils';
@@ -12,13 +11,22 @@ if (import.meta.env?.MODE === 'development') {
 }
 
 const lifecycles = singleSpaAngular<AppProps>({
-  bootstrapFunction: (/*singleSpaProps: AppProps*/) => {
-    return bootstrapApplication(NavRootComponent, appConfig);
+  bootstrapFunction: async (/*singleSpaProps: AppProps*/) => {
+    const appRef = await bootstrapApplication(NavRootComponent, appConfig);
+
+    const listener = () => appRef.tick();
+    window.addEventListener('popstate', listener);
+
+    appRef.onDestroy(() => {
+      window.removeEventListener('popstate', listener);
+    });
+
+    return appRef;
   },
   template: '<nav-root />',
   domElementGetter: () => document.getElementById('single-spa:nav') as HTMLElement,
   Router,
-  NgZone,
+  NgZone: 'noop',
   NavigationStart,
 });
 

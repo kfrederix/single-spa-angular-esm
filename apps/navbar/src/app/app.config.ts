@@ -1,6 +1,5 @@
-import { ApplicationConfig } from '@angular/core';
-import { getSingleSpaExtraProviders } from 'single-spa-angular';
+import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
 
 export const appConfig: ApplicationConfig = {
-  providers: [getSingleSpaExtraProviders()],
+  providers: [provideZonelessChangeDetection()],
 };
