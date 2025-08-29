@@ -1,4 +1,3 @@
-//import { NgZone } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { NavigationStart, Router } from '@angular/router';
 import { loadViteClient } from '@single-spa-angular-esm/shared-utils';
