@@ -22,7 +22,7 @@ export const preProcessSharedPackages = async (packageInfos: PackageInfo[], outp
       entryPoints,
       externals,
       `${outputDir}/${pkgInfo.name}@${pkgInfo.version}`,
-      path.resolve(workspaceRoot, 'node_modules', pkgInfo.name)
+      path.resolve(workspaceRoot, 'node_modules', pkgInfo.name),
     );
   }
 
@@ -41,7 +41,7 @@ async function buildWithEsbuild(
   entryPoints: string[],
   externals: string[],
   outdir: string,
-  outbase: string
+  outbase: string,
 ): Promise<void> {
   await build({
     entryPoints,
@@ -49,11 +49,13 @@ async function buildWithEsbuild(
     outbase,
     format: 'esm',
     target: 'es2022',
-    sourcemap: true,
+    sourcemap: false,
     minify: true,
     legalComments: 'eof',
     bundle: true,
     external: externals,
+    splitting: true,
+    platform: 'browser',
     supported: {
       // Downlevel native `async/await` so that ZoneJS can intercept it.
       'async-await': false,
@@ -85,12 +87,10 @@ async function linkWithBabel(filePath: string): Promise<string> {
     filename: filePath,
     filenameRelative: filePath,
     plugins: [angularBabelLinker],
-    // Sourcemaps are generated inline so that ESBuild can process them.
-    sourceMaps: 'inline',
-    compact: false,
-
+    compact: true,
     configFile: false,
     babelrc: false,
+    minified: true,
     browserslistConfigFile: false,
   });
   return code;
